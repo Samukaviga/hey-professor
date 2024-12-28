@@ -12,6 +12,19 @@
 
 fi;
 
+#rodar os testes
+
+php artisan test
+
+ if [ $? -ne 0 ]; then
+    
+    echo "opa! Deu ruim aqui com algum teste. Arrume antes de continuar...";
+
+    exit 1;
+
+fi;
+
+
 
 
 #formatar cada arquivo alterado usando Laravel Pint
