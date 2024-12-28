@@ -6,3 +6,8 @@
 
 // LARAVEL PINT
 // formatador de codigo, mais bonito
+
+
+//LARASTAN
+// https://github.com/larastan/larastan
+// foca em encontrar erros no seu código .Ele captura classes inteiras de bugs antes mesmo de você escrever testes para o código
