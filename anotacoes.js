@@ -15,3 +15,7 @@
 
 //Pre commit
 // git hook pre-commit, toda vez que fizer o commit será rodado o LARASTAN e o PINT formatando e adicionando no commit
+
+
+//Git Actions
+//
