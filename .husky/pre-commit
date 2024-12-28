@@ -23,9 +23,9 @@ for FILE in $STAGED_FILES
 
 do
 
-    php ./vendor/bin/pint "${FILE}" > /dev/null >&1;
+    php ./vendor/bin/pint "${FILE}";
     
-    git add "${FILE}"
+    git add "${FILE}";
 
 done;
 
