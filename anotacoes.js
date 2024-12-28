@@ -11,3 +11,7 @@
 //LARASTAN
 // https://github.com/larastan/larastan
 // foca em encontrar erros no seu código .Ele captura classes inteiras de bugs antes mesmo de você escrever testes para o código
+
+
+//Pre commit
+// git hook pre-commit, toda vez que fizer o commit será rodado o LARASTAN e o PINT formatando e adicionando no commit
