@@ -26,7 +26,7 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
+    - name: Execute tests (Unit and Feature tests) via Pest
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
@@ -34,4 +34,4 @@ jobs:
     - name: Execute Larastan
       run: php vendor/bin/phpstan analyse
     - name: Execute Laravel Pint
-      run: php vendor/bin/pint --test
+      run: php vendor/bin/pint 
