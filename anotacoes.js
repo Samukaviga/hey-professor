@@ -16,9 +16,7 @@
 //Pre commit
 // git hook pre-commit, toda vez que fizer o commit será rodado o LARASTAN e o PINT formatando e adicionando no commit
 
-
 //test
-
 
 //Git Actions
 // A cada pull-request que for aberto tera que rodar os testes
