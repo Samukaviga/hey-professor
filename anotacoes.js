@@ -18,4 +18,7 @@
 
 
 //Git Actions
-//
+// A cada pull-request que for aberto tera que rodar os testes
+
+//DebugBar
+//Mostrar no navegador varias informaçoes sobre o projeto
