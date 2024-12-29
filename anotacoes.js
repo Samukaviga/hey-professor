@@ -21,4 +21,5 @@
 // A cada pull-request que for aberto tera que rodar os testes
 
 //DebugBar
+// https://github.com/barryvdh/laravel-debugbar
 //Mostrar no navegador varias informaçoes sobre o projeto
