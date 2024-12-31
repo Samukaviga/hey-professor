@@ -7,5 +7,17 @@ parameters:
         - app/
 
     # Level 9 is the highest level
+<<<<<<< HEAD
+    level: 5
+
+#    ignoreErrors:
+#        - '#PHPDoc tag @var#'
+#
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#    checkMissingIterableValueType: false
+=======
     level: 6
 
+>>>>>>> dd2977f335905837a8c905126084f5c01d9aaea2

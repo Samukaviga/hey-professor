@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+    "content-hash": "367541ba168eca4cdec9abb394f5a9d4",
+=======
     "content-hash": "9f2b751c69f8b8b4dd516f7fd7c12aa4",
+>>>>>>> dd2977f335905837a8c905126084f5c01d9aaea2
     "packages": [
         {
             "name": "brick/math",
@@ -7484,6 +7488,18 @@
         },
         {
             "name": "phpstan/phpstan",
+<<<<<<< HEAD
+            "version": "1.12.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "e73868f809e68fff33be961ad4946e2e43ec9e38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e73868f809e68fff33be961ad4946e2e43ec9e38",
+                "reference": "e73868f809e68fff33be961ad4946e2e43ec9e38",
+=======
             "version": "1.12.13",
             "source": {
                 "type": "git",
@@ -7494,6 +7510,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9b469068840cfa031e1deaf2fa1886d00e20680f",
                 "reference": "9b469068840cfa031e1deaf2fa1886d00e20680f",
+>>>>>>> dd2977f335905837a8c905126084f5c01d9aaea2
                 "shasum": ""
             },
             "require": {
@@ -7538,7 +7555,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2024-12-31T07:26:13+00:00"
+=======
             "time": "2024-12-17T17:00:20+00:00"
+>>>>>>> dd2977f335905837a8c905126084f5c01d9aaea2
         },
         {
             "name": "phpunit/php-code-coverage",
