@@ -33,7 +33,27 @@ it('Shold be able to create a new question bigger than 255 characters', function
 
 });
 
-it('Shold check if ends with question mark ?', function () {});
+it('Shold check if ends with question mark ?', function () {
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); //criar um usuario
+
+    actingAs($user); //logar como esse usuario
+
+
+    //Act: agir
+
+    $request = post(route('question.store'), [
+        'question' => str_repeat('*', 10),
+    ]);
+
+    //Assert: verificar
+
+    $request->assertSessionHasErrors(['question' => 'Are you sure that is a question ? It is missing the question mark in the end.']); //verifica se tem algum erro relacionado
+    assertDatabaseCount('questions', 0); //tenha nenhum registro na tabela
+
+});
 
 it('Shold have at least 10 characters', function () {
 
