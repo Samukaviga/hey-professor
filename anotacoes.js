@@ -22,4 +22,14 @@
 
 //DebugBar
 // https://github.com/barryvdh/laravel-debugbar
+
 //Mostrar no navegador varias informaçoes sobre o projeto
+
+//TDD
+// Sao divididos entre testes unitarios UNIT e testes de FEATURE que contempla tudo
+// Iniciando com os testes em desenvolvimento é interessante apagar a pasta Unit e excluir um codigo do arquivo phpunit.xml
+// Os testes serao pelo PEST. php ./vendor/bin/pest --help
+// adicionar o banco de dados sqlite dentro do phpunit.xml para os testes serem mais rapidos
+//Criar um arquivo dentro de Feature para testes, CreateAQuestionTest.php
+// php artisan test --filter=Create
+
