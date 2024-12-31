@@ -33,3 +33,6 @@
 //Criar um arquivo dentro de Feature para testes, CreateAQuestionTest.php
 // php artisan test --filter=Create
 
+//Criando uma Factorie para adicionar dados falsos no BD para manipulação
+// php artisan make:factory QuestionFactory
+//php artisan migrate:fresh --seed  //Ele cria as seeds no banco de dados

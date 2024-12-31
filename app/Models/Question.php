@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //use HasFactory;
+    use HasFactory; // ele já identifica a Factory QuestionFactory automaticamente
 
     protected $table = 'questions';
 
