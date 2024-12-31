@@ -22,6 +22,7 @@
 
 //DebugBar
 // https://github.com/barryvdh/laravel-debugbar
+
 //Mostrar no navegador varias informaçoes sobre o projeto
 
 //TDD
@@ -31,3 +32,4 @@
 // adicionar o banco de dados sqlite dentro do phpunit.xml para os testes serem mais rapidos
 //Criar um arquivo dentro de Feature para testes, CreateAQuestionTest.php
 // php artisan test --filter=Create
+
