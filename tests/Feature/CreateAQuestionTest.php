@@ -18,7 +18,6 @@ it('Shold be able to create a new question bigger than 255 characters', function
 
     //Act: agir
 
-
     $request = post(route('question.store'), [
         'question' => str_repeat('*', 260) . '?',
     ]);
@@ -36,4 +35,25 @@ it('Shold be able to create a new question bigger than 255 characters', function
 
 it('Shold check if ends with question mark ?', function () {});
 
-it('Shold have at least 10 characters', function () {});
+it('Shold have at least 10 characters', function () {
+
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); //criar um usuario
+
+    actingAs($user); //logar como esse usuario
+
+
+    //Act: agir
+
+    $request = post(route('question.store'), [
+        'question' => str_repeat('*', 8) . '?',
+    ]);
+
+    //Assert: verificar
+
+    $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]); //verifica se tem algum erro relacionado
+    assertDatabaseCount('questions', 0); //tenha nenhum registro na tabela
+
+});
