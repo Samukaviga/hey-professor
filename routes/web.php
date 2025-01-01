@@ -8,7 +8,7 @@ Route::get('/', function () {
 
     if (app()->isLocal()) { // logando direto no ambiente local
 
-        auth()->loginUsingId(1);
+        auth()->loginUsingId(21);
 
         return to_route('dashboard');
     }
