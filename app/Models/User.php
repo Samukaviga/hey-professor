@@ -41,4 +41,21 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function votes()
+    {
+
+        return $this->hasMany(Vote::class);
+    }
+
+    public function like(Question $question)
+    {
+
+        $this->votes()->create([ // como o relacionamento com a Model Vote, podemos passar diretamente assim
+            'question_id' => $question->id,
+            // 'user_id' => auth()->id(),
+            'like' => 1,
+            'inlike' => 0,
+        ]);
+    }
 }

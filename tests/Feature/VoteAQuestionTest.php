@@ -19,7 +19,7 @@ it('Shold be able to like a question', function () {
 
     // Act: agir
 
-    post(route('question.like', $question))->assertRedirect();
+    post(route('question.like', $question))->assertRedirect(); // AssertRedirect, esta verificando o redirecionamento
 
     // Assert: verificar
 
