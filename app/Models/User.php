@@ -12,32 +12,17 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -51,11 +36,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function like(Question $question)
     {
 
-        $this->votes()->create([ // como o relacionamento com a Model Vote, podemos passar diretamente assim
-            'question_id' => $question->id,
-            // 'user_id' => auth()->id(),
-            'like' => 1,
-            'inlike' => 0,
-        ]);
+        $this->votes()->updateOrCreate( // como o relacionamento com a Model Vote, podemos passar diretamente assim
+            [
+                'question_id' => $question->id, // Atualiza ou cria com base no question_id
+            ],
+            [
+                'like' => 1,
+                'unlike' => 0,
+            ],
+        );
     }
 }

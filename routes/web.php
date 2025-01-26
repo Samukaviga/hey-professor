@@ -22,7 +22,7 @@ route::post('/question/store', [QuestionController::class, 'store'])->name('ques
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
 
-Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like');
+Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like'); // Dar like
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
