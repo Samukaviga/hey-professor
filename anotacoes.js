@@ -36,3 +36,13 @@
 //Criando uma Factorie para adicionar dados falsos no BD para manipulação
 // php artisan make:factory QuestionFactory
 //php artisan migrate:fresh --seed  //Ele cria as seeds no banco de dados
+
+//Route Model Binding = Ligaçao entre a rota e o Model
+//Ao inves de ao passar um ID pela rota realizar o User::find($id); simplesmente colocar o User diretamente nos parametros do metodo
+//assim nao vai ter a necessidade de usar o medodo FIND 
+
+
+//Lazy Loading
+//Em AppServiceProvider adicionar Model::preventLazyLoading(! app()->isProduction()); para previnir o LozyLoading
+
+

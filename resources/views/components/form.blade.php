@@ -9,7 +9,7 @@
 ])
 
 
-<form class="max-w-sm mx-auto" action="{{ route('question.store') }}" method="POST">
+<form class="max-w-sm mx-auto" action="{{ $action }}" method="POST">
     @csrf
 
     @if ($put)
@@ -20,8 +20,7 @@
         @method('DELETE')
     @endif
 
-
-    {{ $slot }}
-
+    
+{{ $slot }}
     
 </form>

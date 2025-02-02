@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Question;
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +10,7 @@ Route::get('/', function () {
 
     if (app()->isLocal()) { // logando direto no ambiente local
 
-        auth()->loginUsingId(1);
+        auth()->loginUsingId(21);
 
         return to_route('dashboard');
     }
@@ -18,9 +20,11 @@ Route::get('/', function () {
 
 route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
+
+Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like'); // Dar like
+
+Route::post('/question/inlike/{question}', Question\InlikeController::class)->name('question.inlike'); // Dar like
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
