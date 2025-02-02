@@ -20,6 +20,7 @@ class Question extends Model
         return $this->hasMany(Vote::class);
     }
 
+    /*
     // Accessor para calcular o total de likes
     public function likes(): Attribute
     {
@@ -34,4 +35,5 @@ class Question extends Model
             get: fn () => $this->votes()->sum('inlike')  // nesse get: fn() => "é possivel adicionar qualquer coisa aqui"
         );
     }
+    */
 }
