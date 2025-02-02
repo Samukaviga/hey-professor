@@ -12,7 +12,9 @@ class Question extends Model
 
     protected $table = 'questions';
 
-    protected $fillable = ['question'];
+    protected $fillable = ['question', 'draft'];
+
+    protected $casts = ['draft' => 'bool'];
 
     // Relacionamento com a tabela 'votes'
     public function votes()

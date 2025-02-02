@@ -10,7 +10,7 @@ Route::get('/', function () {
 
     if (app()->isLocal()) { // logando direto no ambiente local
 
-        auth()->loginUsingId(21);
+        auth()->loginUsingId(1);
 
         return to_route('dashboard');
     }
@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', 'verified'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
+Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
 
 Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like'); // Dar like
 
