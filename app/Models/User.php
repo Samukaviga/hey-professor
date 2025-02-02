@@ -42,7 +42,21 @@ class User extends Authenticatable implements MustVerifyEmail
             ],
             [
                 'like' => 1,
-                'unlike' => 0,
+                'inlike' => 0,
+            ],
+        );
+    }
+
+    public function inlike(Question $question)
+    {
+
+        $this->votes()->updateOrCreate( // como o relacionamento com a Model Vote, podemos passar diretamente assim
+            [
+                'question_id' => $question->id, // Atualiza ou cria com base no question_id
+            ],
+            [
+                'like' => 0,
+                'inlike' => 1,
             ],
         );
     }
