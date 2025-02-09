@@ -7,29 +7,50 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
-
 it('Shold be able to create a new question bigger than 255 characters', function () {
 
     // Arrange: preparar
 
-    $user = User::factory()->create(); //criar um usuario
+    $user = User::factory()->create(); // criar um usuario
 
-    actingAs($user); //logar como esse usuario
+    actingAs($user); // logar como esse usuario
 
-    //Act: agir
+    // Act: agir
 
     $request = post(route('question.store'), [
-        'question' => str_repeat('*', 260) . '?',
+        'question' => str_repeat('*', 260).'?',
     ]);
 
-    //Assert: verificar
+    // Assert: verificar
 
-    $request->assertRedirect('dashboard'); //redirecionando
+    $request->assertRedirect('dashboard'); // redirecionando
 
-    assertDatabaseCount('questions', 1); //tenha pelo menos 1 registro na table question
+    assertDatabaseCount('questions', 1); // tenha pelo menos 1 registro na table question
 
-    assertDatabaseHas('questions', ['question' => str_repeat('*', 260) . '?']); //tenha uma pergunta com 260 caracteres seguida de ?
+    assertDatabaseHas('questions', ['question' => str_repeat('*', 260).'?']); // tenha uma pergunta com 260 caracteres seguida de ?
 
+});
+
+it('Shold create as a draft all the time', function () {
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); // criar um usuario
+
+    actingAs($user); // logar como esse usuario
+
+    // Act: agir
+
+    $request = post(route('question.store'), [
+        'question' => str_repeat('*', 260).'?',
+    ]);
+
+    // Assert: verificar
+
+    assertDatabaseHas('questions', [
+        'question' => str_repeat('*', 260).'?',
+        'draft' => true,
+    ]); // tenha uma pergunta com 260 caracteres seguida de ? e o Draft seja true
 
 });
 
@@ -37,43 +58,40 @@ it('Shold check if ends with question mark ?', function () {
 
     // Arrange: preparar
 
-    $user = User::factory()->create(); //criar um usuario
+    $user = User::factory()->create(); // criar um usuario
 
-    actingAs($user); //logar como esse usuario
+    actingAs($user); // logar como esse usuario
 
-
-    //Act: agir
+    // Act: agir
 
     $request = post(route('question.store'), [
         'question' => str_repeat('*', 10),
     ]);
 
-    //Assert: verificar
+    // Assert: verificar
 
-    $request->assertSessionHasErrors(['question' => 'Are you sure that is a question ? It is missing the question mark in the end.']); //verifica se tem algum erro relacionado
-    assertDatabaseCount('questions', 0); //tenha nenhum registro na tabela
+    $request->assertSessionHasErrors(['question' => 'Are you sure that is a question ? It is missing the question mark in the end.']); // verifica se tem algum erro relacionado
+    assertDatabaseCount('questions', 0); // tenha nenhum registro na tabela
 
 });
 
 it('Shold have at least 10 characters', function () {
 
-
     // Arrange: preparar
 
-    $user = User::factory()->create(); //criar um usuario
+    $user = User::factory()->create(); // criar um usuario
 
-    actingAs($user); //logar como esse usuario
+    actingAs($user); // logar como esse usuario
 
-
-    //Act: agir
+    // Act: agir
 
     $request = post(route('question.store'), [
-        'question' => str_repeat('*', 8) . '?',
+        'question' => str_repeat('*', 8).'?',
     ]);
 
-    //Assert: verificar
+    // Assert: verificar
 
-    $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]); //verifica se tem algum erro relacionado
-    assertDatabaseCount('questions', 0); //tenha nenhum registro na tabela
+    $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]); // verifica se tem algum erro relacionado
+    assertDatabaseCount('questions', 0); // tenha nenhum registro na tabela
 
 });
