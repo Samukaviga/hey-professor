@@ -26,6 +26,8 @@ Route::post('/question/like/{question}', Question\LikeController::class)->name('
 
 Route::post('/question/inlike/{question}', Question\InlikeController::class)->name('question.inlike'); // Dar like
 
+Route::put('/question/publish/{question}', Question\PublishController::class)->name('question.publish'); // publicar question
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
