@@ -48,3 +48,7 @@
 //Em AppServiceProvider adicionar Model::preventLazyLoading(! app()->isProduction()); para previnir o LozyLoading
 
 
+//Polices
+//sao regras que voce colocar de autorização de quem pode e qum nao pode em cima de um Model
+//php artisan make:policy QuestionPolicy  e depois selecione o Model que voce quer aplicar ao seu policy
+

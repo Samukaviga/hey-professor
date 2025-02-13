@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Question;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -25,10 +25,12 @@ class QuestionController extends Controller
             ],
         ]);
 
-        Question::query()->create([
-            'question' => $request->question,
-            'draft' => true,
-        ]);
+        Auth::user()->questions()->create(  // através desse relacionamento que já esta vinculado com o created_by, nao precisará lista esse atributo como parametro
+            [
+                'question' => $request->question,
+                'draft' => true,
+            ]
+        );
 
         return to_route('dashboard');
     }

@@ -12,7 +12,7 @@ class Question extends Model
 
     protected $table = 'questions';
 
-    protected $fillable = ['question', 'draft'];
+    protected $fillable = ['question', 'draft', 'created_by'];
 
     protected $casts = ['draft' => 'bool'];
 
@@ -20,6 +20,11 @@ class Question extends Model
     public function votes()
     {
         return $this->hasMany(Vote::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     /*
