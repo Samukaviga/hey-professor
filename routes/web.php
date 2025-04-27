@@ -22,7 +22,11 @@ Route::middleware('auth')->group(function () {
 
     // region Questions Controllers
 
+    Route::get('/question', [QuestionController::class, 'index'])->name('question.index'); // Index
+
     route::post('/question/store', [QuestionController::class, 'store'])->name('question.store');
+
+    Route::delete('/question/{question}', [QuestionController::class, 'destroy'])->name('question.destroy'); // deletar question
 
     Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
 

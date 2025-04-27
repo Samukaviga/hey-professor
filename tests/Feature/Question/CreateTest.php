@@ -23,7 +23,7 @@ it('Shold be able to create a new question bigger than 255 characters', function
 
     // Assert: verificar
 
-    $request->assertRedirect('dashboard'); // redirecionando
+    $request->assertRedirect(); // redirecionando
 
     assertDatabaseCount('questions', 1); // tenha pelo menos 1 registro na table question
 

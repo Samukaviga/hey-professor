@@ -11,4 +11,9 @@ class QuestionPolicy
     {
         return $question->createdBy()->is($user); // criador da pergunta é o mesmo do usuario logado ?
     }
+
+    public function destroy(User $user, Question $question): bool
+    {
+        return $question->createdBy()->is($user); // criador da pergunta é o mesmo do usuario logado ?
+    }
 }

@@ -49,6 +49,6 @@
 
 
 //Polices
-//sao regras que voce colocar de autorização de quem pode e qum nao pode em cima de um Model
+//sao regras que voce colocar de autorização de quem pode e quem nao pode em cima de um Model
 //php artisan make:policy QuestionPolicy  e depois selecione o Model que voce quer aplicar ao seu policy
 
