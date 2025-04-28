@@ -1,5 +1,7 @@
 
 
+// php artisan test --filter=Create
+
 // Para aux. no git hooks, para que fique salvo no git os commits padroes do projeto, iremos instalar um pacote JS:
 // --husky git hooks https://typicode.github.io/husky/
 
@@ -45,4 +47,8 @@
 //Lazy Loading
 //Em AppServiceProvider adicionar Model::preventLazyLoading(! app()->isProduction()); para previnir o LozyLoading
 
+
+//Polices
+//sao regras que voce colocar de autorização de quem pode e quem nao pode em cima de um Model
+//php artisan make:policy QuestionPolicy  e depois selecione o Model que voce quer aplicar ao seu policy
 

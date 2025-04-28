@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Question[] $questions
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -31,6 +34,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
 
         return $this->hasMany(Vote::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'created_by');
     }
 
     public function like(Question $question)

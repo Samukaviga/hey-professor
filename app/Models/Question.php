@@ -12,12 +12,19 @@ class Question extends Model
 
     protected $table = 'questions';
 
-    protected $fillable = ['question'];
+    protected $fillable = ['question', 'draft', 'created_by'];
+
+    protected $casts = ['draft' => 'bool'];
 
     // Relacionamento com a tabela 'votes'
     public function votes()
     {
         return $this->hasMany(Vote::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     /*
