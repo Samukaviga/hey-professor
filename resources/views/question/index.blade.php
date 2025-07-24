@@ -23,7 +23,7 @@
 
         </x-form>
 
-         <!-- DRAFTS -->
+        <!-- DRAFTS -->
 
         <hr class="border-gray-700 mt-2">
 
@@ -39,44 +39,48 @@
                     <tr>
                         <x-table-th>Question</x-table-th>
                         <x-table-th>Actions</x-table-th>
+
                     </tr>
 
+
+
                 </x-table-thead>
-                
+
                 <x-table-tbody>
-                    @foreach ($questions->where('draft', true) as $item )
-                  
-                    <x-table-tr>
-                        <x-table-td>
-                            {{ $item->question }}
-                        </x-table-td>
-                        <x-table-td>
-                            <!-- botao de deletar -->
+                    @foreach ($questions->where('draft', true) as $item)
 
-                            <div class="flex">
-                                <x-form :action="route('question.destroy', $item)" delete> 
+                        <x-table-tr>
+                            <x-table-td>
+                                {{ $item->question }}
+                            </x-table-td>
+                            <x-table-td>
+                                <!-- botao de deletar -->
 
-                                    <x-button class="text-white bg-red-700 px-2 py-1 rounded" type="submit" >Deletar</x-button>
-    
-                                </x-form>
-    
-                               
-                                <x-form :action="route('question.publish', $item)" put> 
-    
-                                    <x-button class="text-white bg-blue-700 px-2 py-1 rounded" type="submit" >Publicar</x-button>
-    
-                                </x-form>
-    
-                            </div>
-                           
+                                
+                                    <x-form :action="route('question.destroy', $item)" delete>
+                                        <button class="hover:underline text-blue-200">Deletar</button>
+                                    </x-form>
 
-                        </x-table-td>
-                    </x-table-tr>
+                                    <x-form :action="route('question.publish', $item)" put>
+                                        <button
+                                            class="hover:underline text-blue-200">Publicar
+                                        </button>
+                                    </x-form>
+
+                            
+
+
+                            </x-table-td>
+
+
+
+
+                        </x-table-tr>
 
                     @endforeach
 
                 </x-table-tbody>
-            
+
             </x-table>
 
 
@@ -106,24 +110,28 @@
                     </tr>
 
                 </x-table-thead>
-                
+
                 <x-table-tbody>
-                    @foreach ($questions->where('draft', false) as $item )
-                  
-                    <x-table-tr>
-                        <x-table-td>
-                            {{ $item->question }}
-                        </x-table-td>
-                        <x-table-td>
-                            <!-- botao de deletar -->
-                            <!-- botao de publicar -->
-                        </x-table-td>
-                    </x-table-tr>
+                    @foreach ($questions->where('draft', false) as $item)
+
+                        <x-table-tr>
+                            <x-table-td>
+                                {{ $item->question }}
+                            </x-table-td>
+                           
+                            <x-table-td>
+                                <x-form :action="route('question.destroy', $item)" delete>
+                                    <button class="hover:underline text-blue-200">Deletar</button>
+                                </x-form>
+                                <!-- botao de publicar -->
+                            
+                            </x-table-td>
+                        </x-table-tr>
 
                     @endforeach
 
                 </x-table-tbody>
-            
+
             </x-table>
 
 

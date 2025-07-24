@@ -41,6 +41,11 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function edit(Question $question)
+    {
+        //   response(['ola' => true], 200);
+    }
+
     public function destroy(Question $question)
     {
         $this->authorize('destroy', $question); // usuario tem autorização de deletar essa perguntar ?
