@@ -43,7 +43,7 @@ class QuestionController extends Controller
 
     public function edit(Question $question)
     {
-        //   response(['ola' => true], 200);
+        return view('question.edit', compact('question'));
     }
 
     public function destroy(Question $question)
