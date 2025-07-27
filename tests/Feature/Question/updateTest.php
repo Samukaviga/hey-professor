@@ -2,9 +2,9 @@
 
 use App\Models\Question;
 use App\Models\User;
-use Illuminate\Support\Str;
 
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\put;
 
 it('should update the question in the database', function () {
@@ -54,15 +54,85 @@ it('Should make sure only user that created a question can updated the question'
     $question = Question::factory()->create(['created_by' => $rightUser, 'draft' => true]);
 
     put(route('question.update', $question), ['question' => 'This is a new questions for my friendy ?'])->assertRedirect();
-    /*
-    $question->refresh();
-
-     $this->assertTrue(
-        Str::endsWith($question->question, '?'),
-    );*/
 
     actingAs($wronguser);
 
     put(route('question.update', $question), ['question' => 'this is a new question ?'])->assertForbidden();
+
+});
+
+it('Shold question updated have at least 10 characters', function () {
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); // criar um usuario
+
+    actingAs($user); // logar como esse usuario
+
+    $question = Question::factory()->create(['created_by' => $user, 'draft' => true]);
+
+    // Act: agir
+
+    $request = put(route('question.update', $question), [
+        'question' => str_repeat('*', 8).'?',
+    ]);
+
+    // Assert: verificar
+
+    $request->assertSessionHasErrors(['question' => __('validation.min.string', ['min' => 10, 'attribute' => 'question'])]); // verifica se tem algum erro relacionado
+
+    assertDatabaseHas('questions', [
+        'question' => $question->question,
+    ]);
+
+});
+
+it('Should check if question updated ends with mark ?', function () {
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); // criar um usuario
+
+    actingAs($user); // logar como esse usuario
+
+    $question = Question::factory()->create(['created_by' => $user, 'draft' => true]);
+
+    // Act: agir
+
+    $request = put(route('question.update', $question), [
+        'question' => str_repeat('*', 10),
+    ]);
+
+    // Assert: verificar
+
+    $request->assertSessionHasErrors(['question' => 'Are you sure that is a question ? It is missing the question mark in the end.']); // verifica se tem algum erro relacionado
+
+    assertDatabaseHas('questions', [
+        'question' => $question->question,
+    ]); // verifica se a pergunta permanece a mesma
+
+});
+
+it('Shold be able to update a new question bigger than 255 characters', function () {
+
+    // Arrange: preparar
+
+    $user = User::factory()->create(); // criar um usuario
+
+    actingAs($user); // logar como esse usuario
+
+    $question = Question::factory()->create(['created_by' => $user, 'draft' => true]);
+
+    // Act: agir
+
+    $request = put(route('question.update', $question), [
+        'question' => str_repeat('*', 260).'?',
+    ]);
+
+    // Assert: verificar
+
+    $request->assertRedirect(); // redirecionando
+
+    assertDatabaseHas('questions', ['question' => str_repeat('*', 260).'?']); // tenha uma pergunta com 260 caracteres seguida de ?
 
 });
