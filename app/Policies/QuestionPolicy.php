@@ -16,4 +16,9 @@ class QuestionPolicy
     {
         return $question->createdBy()->is($user); // criador da pergunta é o mesmo do usuario logado ?
     }
+
+    public function update(User $user, Question $question)
+    {
+        return $question->draft && $question->createdBy()->is($user);  // a pergunta é um rascunho e foi criada pelo usuario logado ?
+    }
 }

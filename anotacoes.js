@@ -9,6 +9,7 @@
 // LARAVEL PINT
 // formatador de codigo, mais bonito
 
+// editando para teste do commit
 
 //LARASTAN
 // https://github.com/larastan/larastan
