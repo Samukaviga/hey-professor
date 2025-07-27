@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
     route::get('/question/{question}/edit', [QuestionController::class, 'edit'])->name('question.edit');
 
+    route::put('/question/{question}', [QuestionController::class, 'update'])->name('question.update');
+
     Route::delete('/question/{question}', [QuestionController::class, 'destroy'])->name('question.destroy'); // deletar question
 
     Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função

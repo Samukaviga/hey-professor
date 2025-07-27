@@ -12,7 +12,7 @@ it('shoul be able to open a question to edit', function () {
 
     $user = User::factory()->create();
 
-    $question = Question::factory()->for($user, 'createdBy')->create();
+    $question = Question::factory()->for($user, 'createdBy')->create(['draft' => true]);
 
     // Act
 
@@ -30,7 +30,7 @@ it('shold return a view', function () {
 
     $user = User::factory()->create();
 
-    $question = Question::factory()->for($user, 'createdBy')->create();
+    $question = Question::factory()->for($user, 'createdBy')->create(['draft' => true]);
 
     // Act
 
@@ -39,5 +39,26 @@ it('shold return a view', function () {
     // Assert
 
     get(route('question.edit', $question))->assertViewIs('question.edit');   // verifica se acessa a view
+
+});
+
+it('shold make sure that only question with status DRAFT can be edited', function () {
+
+    // Arrange - preparar
+
+    $user = User::factory()->create();
+
+    $questionNotDraft = Question::factory()->for($user, 'createdBy')->create(['draft' => false]);
+
+    $draftQuestion = Question::factory()->for($user, 'createdBy')->create(['draft' => true]);
+
+    // Act
+
+    actingAs($user);
+
+    // Assert
+    get(route('question.edit', $questionNotDraft))->assertForbidden();   // verifica que o usuerio não tem permissao para a alteração 403
+
+    get(route('question.edit', $draftQuestion))->assertSuccessful(); // Verifica se retorna sucesso
 
 });
