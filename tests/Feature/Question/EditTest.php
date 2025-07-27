@@ -24,7 +24,7 @@ it('shoul be able to open a question to edit', function () {
 
 });
 
-it('shold return a view', function () {
+it('should return a view', function () {
 
     // Arrange - preparar
 
@@ -42,7 +42,7 @@ it('shold return a view', function () {
 
 });
 
-it('shold make sure that only question with status DRAFT can be edited', function () {
+it('should make sure that only question with status DRAFT can be edited', function () {
 
     // Arrange - preparar
 
@@ -63,7 +63,7 @@ it('shold make sure that only question with status DRAFT can be edited', functio
 
 });
 
-it('shold make sure that only user that created the question can edit the question', function () {
+it('should make sure that only user that created the question can edit the question', function () {
 
     // Arrange: preparar
 

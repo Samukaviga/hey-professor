@@ -48,11 +48,17 @@ class QuestionController extends Controller
         return view('question.edit', compact('question'));
 
     }
-    /*
-    public function update(Request $request)
+
+    public function update(Question $question)
     {
 
-    } */
+        $question->update([
+            'question' => request()->question,
+        ]);
+
+        return back();
+
+    }
 
     public function destroy(Question $question)
     {
