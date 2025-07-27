@@ -19,6 +19,6 @@ class QuestionPolicy
 
     public function update(User $user, Question $question)
     {
-        return $question->draft; // a pergunta é um rascunho ?
+        return $question->draft && $question->createdBy()->is($user);  // a pergunta é um rascunho e foi criada pelo usuario logado ?
     }
 }
