@@ -67,6 +67,8 @@
                                         </button>
                                     </x-form>
 
+                                    <a href="{{ route('question.edit', [$item]) }}" class="hover:underline text-blue-200">Editar</a>
+
                             
 
 

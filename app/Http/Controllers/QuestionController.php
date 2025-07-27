@@ -72,7 +72,7 @@ class QuestionController extends Controller
             'question' => request()->question,
         ]);
 
-        return back();
+        return redirect()->route('question.index');
 
     }
 
