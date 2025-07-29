@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     // region Questions Controllers
+    Route::get('/dashboard', DashboardController::class)->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
 
     Route::get('/question', [QuestionController::class, 'index'])->name('question.index'); // Index
 
@@ -31,8 +32,6 @@ Route::middleware('auth')->group(function () {
     route::put('/question/{question}', [QuestionController::class, 'update'])->name('question.update');
 
     Route::delete('/question/{question}', [QuestionController::class, 'destroy'])->name('question.destroy'); // deletar question
-
-    Route::get('/dashboard', DashboardController::class)->middleware(['auth'])->name('dashboard'); // sem metodo, pois só usaremos esse controller para uma função
 
     Route::post('/question/like/{question}', Question\LikeController::class)->name('question.like'); // Dar like
 

@@ -20,6 +20,8 @@
 
             @endforeach
 
+
+            {{ $questions->links() }}
         </div>
 
 
